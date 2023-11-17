@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+	<head>
+		<title>WELCOME TO EMPLOYEE EDIT PAGE</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="card">
+				<div class="card-header bg-primary text-white text-center">
+					<h2>EMPLOYEE EDIT PAGE</h2>
+				</div>
+				
+				<div class="card-body">
+					<form th:action="@{/v1/api/employee/update}" method="post" th:object="${employee}">
+						ID	: <input type="text" th:field="*{empId}" readonly="true" class="form-control"/><br>
+						NAME	: <input type="text" th:field="*{empName}" class="form-control"/><br>
+						GENDER	: <br>
+						 <input type="radio" th:field="*{empGen}" value="MALE"/> MALE
+						 <input type="radio" th:field="*{empGen}" value="FE-MALE"/> FE-MALE <br>
+						DATE	: <input type="text" th:field="*{empDate}" class="form-control"/><br>
+						SALARY	: <input type="text" th:field="*{empSal}" class="form-control"/><br>
+						DEPT	: <select th:field="*{empDept}" class="form-control">
+									<option value="">--SELECT--</option>
+									<option th:each="dob:${deptList}" 
+										th:value="${dob}" 
+										th:text="${dob}"></option>
+								  </select>
+						ADDRESS	: <textarea type="text" th:field="*{empAddr}" class="form-control"></textarea><br>
+						<button type="submit" class="btn btn-primary">UPDATE</button>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

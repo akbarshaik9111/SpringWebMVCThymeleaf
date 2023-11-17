@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+	<head>
+		<title>WELCOME EMPLOYEE REGISTER</title>
+	</head>
+
+	<body>
+		<h2>EMPLOYEE REGISTER PAGE</h2>
+		<form th:action="@{/v1/api/employee/saveemployee}" method="post">
+			<pre>
+			NAME	: <input type="text" name="empName"/>
+			SALARY	: <input type="text" name="empSal"/>
+			DEPT	: <select name="empDept">
+						<option value="">--SELECT--</option>
+						<option th:each="dob:${deptList}" 
+							th:value="${dob}" 
+							th:text="${dob}"></option>
+					  </select>
+			<button type="submit">CREATE</button>
+			</pre>
+		</form>
+		<div th:text="${message}"></div>
+	</body>
+</html>
